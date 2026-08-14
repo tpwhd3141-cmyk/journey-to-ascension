@@ -144,7 +144,7 @@ function storeLoopStartNumbersForNextGameOver() {
 // MARK: Tasks
 export function calcTaskCost(task) {
     const base_cost = 10;
-    const normal_exponent = 2.2;
+    const normal_exponent = 1.01; // 존 돌파 속도 대폭 증가 (기존 2.2)
     const boss_exponent = 4;
     const zone_exponent = task.task_definition.type == TaskType.Boss ? boss_exponent : normal_exponent;
     const zone_mult = Math.pow(zone_exponent, task.task_definition.zone_id);
@@ -512,7 +512,7 @@ export function calcReflectionsOnTheJourneyMult(zone) {
     return Math.pow(base, zone_diff);
 }
 export function calcEnergyDrainPerTickInZone(zone) {
-    let drain = 1 * GAME_PROGRESS_MULTIPLIER * 1 * 1; // 태스크당 에너지 소모 10000배 감소 (난이도 하향)
+    let drain = 1 * GAME_PROGRESS_MULTIPLIER * 1000 * 1000; // 태스크당 에너지 소모 100만배 증가 (소모 체감을 위해)
     if (hasPerk(PerkType.HighAltitudeClimbing)) {
         drain *= 0.8;
     }
