@@ -44,7 +44,7 @@
 body {
     color: var(--default-text-color);
     margin: var(--standard-div-spacing);
-    min-height: calc(100vh - (var(--standard-div-spacing) * 2));
+    min-height: calc(100dvh - (var(--standard-div-spacing) * 2));
     background: linear-gradient(120deg, #102661, #8c386d) fixed;
 
     user-select: none;          /* Standard syntax */
