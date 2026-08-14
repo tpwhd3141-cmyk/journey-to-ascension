@@ -645,7 +645,7 @@ export function calcReflectionsOnTheJourneyMult(zone: number) {
 }
 
 export function calcEnergyDrainPerTickInZone(zone: number): number {
-    let drain = 1;
+    let drain = 1 * GAME_PROGRESS_MULTIPLIER; // 진행 속도 배수만큼 에너지 소모도 같이 빨라지도록 동기화
 
     if (hasPerk(PerkType.HighAltitudeClimbing)) {
         drain *= 0.8;
