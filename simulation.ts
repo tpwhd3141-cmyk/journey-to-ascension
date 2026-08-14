@@ -645,7 +645,7 @@ export function calcReflectionsOnTheJourneyMult(zone: number) {
 }
 
 export function calcEnergyDrainPerTickInZone(zone: number): number {
-    let drain = 1 * GAME_PROGRESS_MULTIPLIER * 10 * 10; // 태스크당 에너지 소모 - 존1 통과 불가 문제로 안전한 수준으로 재조정
+    let drain = 1 * GAME_PROGRESS_MULTIPLIER * 0.05; // 시작 에너지(100) 기준 존1 태스크들을 실제로 감당 가능하도록 재계산
 
     if (hasPerk(PerkType.HighAltitudeClimbing)) {
         drain *= 0.8;
