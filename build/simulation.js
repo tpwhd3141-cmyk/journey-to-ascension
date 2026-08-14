@@ -12,7 +12,7 @@ const ZONE_SPEEDUP_BASE = 1.05;
 export const BOSS_MAX_ENERGY_DISPARITY = 5;
 const STARTING_ENERGY = 100;
 const DEFAULT_TICK_RATE = 66.6;
-const GAME_SPEED_MULTIPLIER = 30; // 게임 전체 진행 속도 배수 (틱 간격을 나눠서 적용)
+const GAME_SPEED_MULTIPLIER = 300; // 게임 전체 진행 속도 배수 (틱 간격을 나눠서 적용)
 export const SAVE_VERSION = "1.1.1";
 const TASK_STARTED_PROGRESS = 0.01;
 // MARK: Skills
