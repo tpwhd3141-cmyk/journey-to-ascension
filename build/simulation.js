@@ -12,7 +12,9 @@ const ZONE_SPEEDUP_BASE = 1.05;
 export const BOSS_MAX_ENERGY_DISPARITY = 5;
 const STARTING_ENERGY = 100;
 const DEFAULT_TICK_RATE = 66.6;
-const GAME_SPEED_MULTIPLIER = 300; // 게임 전체 진행 속도 배수 (틱 간격을 나눠서 적용)
+const TICK_INTERVAL_SPEEDUP = 8; // 틱 간격을 줄이는 배수 (브라우저 setInterval 최소 간격 제한 안전권 내로 유지)
+const GAME_PROGRESS_MULTIPLIER = 37.5; // 틱당 생산량 배수 (브라우저 제한과 무관하게 실제 배속을 보장)
+// TICK_INTERVAL_SPEEDUP * GAME_PROGRESS_MULTIPLIER = 총 300배 실질 배속
 export const SAVE_VERSION = "1.1.1";
 const TASK_STARTED_PROGRESS = 0.01;
 // MARK: Skills
@@ -193,7 +195,7 @@ export function calcTaskProgressMultiplier(task, override_haste = null, override
     if (hasPrestigeUnlock(PrestigeUnlockType.AmazingSpeed)) {
         mult *= FINAL_PRESTIGE_MULT;
     }
-    return mult * task_progress_mult;
+    return mult * task_progress_mult * GAME_PROGRESS_MULTIPLIER;
 }
 function calcTaskProgressPerTick(task) {
     return calcTaskProgressMultiplier(task);
@@ -1307,7 +1309,7 @@ function advanceZone() {
     doMasteryOfTimeTaskCompletion();
 }
 export function calcTickRate() {
-    let tick_rate = DEFAULT_TICK_RATE / GAME_SPEED_MULTIPLIER;
+    let tick_rate = DEFAULT_TICK_RATE / TICK_INTERVAL_SPEEDUP;
     if (hasPrestigeUnlock(PrestigeUnlockType.DivineSpeed)) {
         const overflow = GAMESTATE.max_energy - STARTING_ENERGY;
         tick_rate /= 1 + overflow / DIVINE_SPEED_TICKS_PER_PERCENT / 100;
