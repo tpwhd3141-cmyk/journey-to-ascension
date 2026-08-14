@@ -1,4 +1,4 @@
-export declare const ENERGETIC_MEMORY_MULT = 0.1;
+export declare const ENERGETIC_MEMORY_MULT = 1000;
 export declare const REFLECTIONS_ON_THE_JOURNEY_BASE = 0.95;
 export declare const REFLECTIONS_ON_THE_JOURNEY_BOOSTED_BASE = 0.9;
 export declare const AWAKENING_DIVINE_SPARK_MULT: number;
