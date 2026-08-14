@@ -512,7 +512,7 @@ export function calcReflectionsOnTheJourneyMult(zone) {
     return Math.pow(base, zone_diff);
 }
 export function calcEnergyDrainPerTickInZone(zone) {
-    let drain = 1 * GAME_PROGRESS_MULTIPLIER * 100; // 진행 속도 배수의 100배로 에너지 소모를 더 빠르게
+    let drain = 1 * GAME_PROGRESS_MULTIPLIER * 100 * 100; // 진행 속도 배수의 10000배로 에너지 소모를 더 빠르게
     if (hasPerk(PerkType.HighAltitudeClimbing)) {
         drain *= 0.8;
     }
